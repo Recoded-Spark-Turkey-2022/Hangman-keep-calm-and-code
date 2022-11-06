@@ -1,0 +1,10 @@
+.figure-container{
+    fill:transparent;
+    stroke: rgb(69, 63, 63); 
+    stroke-width: 10px;
+    stroke-linecap:round;
+
+}
+.figure-part{
+    display:block;
+}
