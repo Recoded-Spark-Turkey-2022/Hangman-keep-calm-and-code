@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
 .figure-container{
     fill:transparent;
     stroke: rgb(69, 63, 63); 
@@ -5,8 +10,32 @@
     stroke-linecap:round;
 
 }
-.figure-part{
+
     /* display:block; */ /*we will change the display in js file*/
     display:none
 }
 
+r
+.figure-part{
+
+    display:none;
+}
+
+.btn-alphabet{
+    margin:10px 10px;
+}
+.single-letterBox{
+    margin:0px 20px;
+    width: 20px !important;
+    display: inline-block;
+
+    text-align: center;
+    border-bottom: 1px solid rgb(61, 61, 61);
+
+}
+.inactive{
+    display: none;
+}
+.active{
+    display: block;
+}
