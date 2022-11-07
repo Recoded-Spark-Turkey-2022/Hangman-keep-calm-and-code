@@ -6,5 +6,7 @@
 
 }
 .figure-part{
-    display:block;
+    /* display:block; */ /*we will change the display in js file*/
+    display:none
 }
+
