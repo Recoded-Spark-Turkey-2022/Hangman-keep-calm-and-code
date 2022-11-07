@@ -10,7 +10,14 @@
     stroke-linecap:round;
 
 }
+
+    /* display:block; */ /*we will change the display in js file*/
+    display:none
+}
+
+r
 .figure-part{
+
     display:none;
 }
 
