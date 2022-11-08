@@ -1,43 +1,38 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-.figure-container{
-    fill:transparent;
-    stroke: rgb(69, 63, 63); 
-    stroke-width: 10px;
-    stroke-linecap:round;
+.figure-container {
+  fill: transparent;
+  stroke: rgb(69, 63, 63);
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+/* display:block; */ /*we will change the display in js file*/
 
+.figure-part {
+  display: none;
 }
 
-    /* display:block; */ /*we will change the display in js file*/
-
-
-.figure-part{
-
-    display:none;
+.btn-alphabet {
+  margin: 10px 10px;
 }
+.single-letterBox {
+  margin: 0px 20px;
+  width: 20px !important;
+  display: inline-block;
 
-.btn-alphabet{
-    margin:10px 10px;
+  text-align: center;
+  border-bottom: 1px solid rgb(61, 61, 61);
 }
-.single-letterBox{
-    margin:0px 20px;
-    width: 20px !important;
-    display: inline-block;
-
-    text-align: center;
-    border-bottom: 1px solid rgb(61, 61, 61);
-
+.inactive {
+  display: none;
 }
-.inactive{
-    display: none;
+.active {
+  display: block;
 }
-.active{
-    display: block;
-}
-.selected{
-    background-color: rgb(156, 18, 13);
-    color:#fff;
+.selected {
+  background-color: rgb(156, 18, 13);
+  color: #fff;
 }
