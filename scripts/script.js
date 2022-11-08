@@ -2,9 +2,11 @@ const parentButton = document.querySelector(".button-container");
 const buttonsArea = document.querySelector(".letter-buttons");
 const randomWordDiv = document.querySelector(".random-word");
 const allFigureParts = document.querySelectorAll(".figure-part");
-const hintBtn = document.getElementById('hint-btn')
-const playAgainBtn = document.getElementById('play-again-btn')
+const hintBtn = document.getElementById("hint-btn");
+const playAgainBtn = document.getElementById("play-again-btn");
 let gameWord;
+
+let filteredArray;
 //gets hangman lines
 const head = document.getElementById("head");
 const leg1 = document.getElementById("leg-1");
@@ -65,14 +67,17 @@ function checkWord(findLetter, selectedButton) {
       if (hangman.length >= hangmanIndex) {
         hangman[hangmanIndex].style.display = "block";
 
-        selectedButton.classList.add("selected");
+        selectedButton.classList.add("false-selected");
         selectedButton.disabled = true;
 
         hangmanIndex += 1;
         if (hangmanIndex === hangman.length - 1) {
-          console.log("last chance");
+          alert("last chance");
         } else if (hangmanIndex === hangman.length) {
-          console.log("game over");
+          alert("game over");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
         }
       }
     }
@@ -80,8 +85,13 @@ function checkWord(findLetter, selectedButton) {
     gameWord.forEach((singleWord, index) => {
       if (singleWord === findLetter.innerText) {
         const selectedWord = document.getElementById(`single-letter-${index}`);
+
         selectedWord.innerText = singleWord.toUpperCase();
+        selectedButton.classList.add("true-selected");
         selectedButton.disabled = true;
+
+        filteredArray = gameWord.filter((word) => word !== singleWord);
+        console.log(filteredArray);
       }
     });
   }
@@ -90,6 +100,8 @@ function checkWord(findLetter, selectedButton) {
 //*Getting Random Name  */
 
 const fetchData = async () => {
+  const randomWordUpdate = document.createElement("div");
+  randomWordUpdate.setAttribute("class", "random-word");
   try {
     const response = await fetch(
       "https://random-word-api.herokuapp.com/word?number=1"
@@ -97,6 +109,7 @@ const fetchData = async () => {
     if (response.ok) {
       const data = await response.json();
       const randomLetters = data[0].split("");
+      gameWord = randomLetters;
       gameWord = randomLetters;
       randomLetters.forEach((singleLetter, index) => {
         const letterBox = document.createElement("span");
@@ -114,44 +127,56 @@ const fetchData = async () => {
 };
 fetchData();
 
-// function enableLetterBtn(){
-// for (let i = 0; i < buttonsArea.length; i++){
-//     console.log(i)
-// }
-// }
+playAgainBtn.addEventListener("click", () => {
+  hangmanIndex = 0;
+  const allBtns = document.querySelectorAll(".letter-button");
+  -allBtns.forEach((btn) => {
+    btn.disabled = false;
+    btn.classList.remove("selected");
+  });
+  hangman.forEach((e) => {
+    e.style.display = "none";
+  });
 
-playAgainBtn.addEventListener("click" , () => {
-    hangmanIndex = 0;
-    const allBtns = document.querySelectorAll('.letter-button')
-    console.log(allBtns)
-   allBtns.forEach((btn) => {
-    btn.disabled = false ;
-    btn.classList.remove("selected")
-   })
-   hangman.forEach((e) => {
-    e.style.display = "none"
-   })
-   const fetchData = async () => {
-    try {
-      const response = await fetch(
-        "https://random-word-api.herokuapp.com/word?number=1"
-      );
-      if (response.ok) {
-        const data = await response.json();
-        const randomLetters = data[0].split("");
-        gameWord = randomLetters;
-        randomLetters.forEach((singleLetter, index) => {
-          const letterBox = document.createElement("span");
-          letterBox.setAttribute("class", "single-letterBox");
-          letterBox.setAttribute("id", `single-letter-${index}`);
-  
-          letterBox.innerText = "";
-          randomWordDiv.appendChild(letterBox);
-        });
-        console.log(randomLetters);
-      }
-    } catch (error) {
-      console.log(error);
+  window.location.reload();
+});
+
+hintBtn.addEventListener("click", () => {
+  if (true) {
+    if (gameWord.length <= 12) {
+      gameWord.forEach((word, wordIndex) => {
+        const selectedRandomLetter1 = document.getElementById(
+          `single-letter-${2}`
+        );
+        const selectedRandomLetter6 = document.getElementById(
+          `single-letter-${6}`
+        );
+
+        if (wordIndex === 2) {
+          return (selectedRandomLetter1.innerText = word);
+        }
+        if (wordIndex === 6) {
+          return (selectedRandomLetter6.innerText = word);
+        }
+      });
     }
-  };
-})
+  }
+  // else {
+  //   gameWord.forEach((word, wordIndex) => {
+  //     const selectedRandomLetter1 = document.getElementById(
+  //       `single-letter-${2}`
+  //     );
+  //     const selectedRandomLetter2 = document.getElementById(
+  //       `single-letter-${5}`
+  //     );
+  //     const selectedRandomLetter3 = document.getElementById(
+  //       `single-letter-${6}`
+  //     );
+  //     if (wordIndex === 2) {
+  //       selectedRandomLetter1.innerText = word;
+  //     } else if (wordIndex === 5) {
+  //       selectedRandomLetter2.innerText = word;
+  //     }
+  //   });
+  // }
+});
