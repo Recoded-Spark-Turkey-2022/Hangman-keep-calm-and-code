@@ -1,14 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./styles/style.css">
-</head>
-<body>
-  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+  </head>
 
-  <script src="./scripts/script.js"></script>
-</body>
+  <body>
+    <header class="header-container">
+      <video
+        id="background-video"
+        autoplay
+        loop
+        muted
+        poster="./video/dragon.mp4"
+      >
+        <source src="./video/dragon.mp4" type="video/mp4" />
+      </video>
+      <h1>HANGMAN</h1>
+      <p>
+        Use the alphabet below to guess the word, or click hint a get a clue
+      </p>
+    </header>
+
+    <div class="styling">
+      <div class="letter-buttons"></div>
+
+      <svg height="250" width="200" class="figure-container">
+        <line x1="10" y1="20" x2="140" y2="20" />
+        <!-- <line x1="50" y1="00" x2="100" y2="00" class="deneme" /> -->
+        <line x1="60" y1="20" x2="190" y2="20" />
+        <line
+          x1="190"
+          y1="20"
+          x2="190"
+          y2="50"
+          class="figure-part"
+          id="line-1"
+        />
+        <line
+          x1="140"
+          y1="20"
+          x2="140"
+          y2="50"
+          class="figure-part"
+          id="line-2"
+        />
+        <line x1="60" y1="20" x2="60" y2="230" />
+        <line x1="30" y1="230" x2="260" y2="230" />
+        <!-- body of our guy -->
+        <!-- head -->
+        <circle cx="140" cy="70" r="20" class="figure-part" id="head" />
+        <!-- body -->
+        <line
+          x1="140"
+          y1="90"
+          x2="140"
+          y2="90"
+          class="figure-part"
+          id="body-1"
+        />
+        <line
+          x1="140"
+          y1="90"
+          x2="140"
+          y2="115"
+          class="figure-part"
+          id="body-2"
+        />
+        <line
+          x1="140"
+          y1="90"
+          x2="140"
+          y2="150"
+          class="figure-part"
+          id="body-3"
+        />
+        <!-- arms -->
+        <line
+          x1="140"
+          y1="120"
+          x2="120"
+          y2="100"
+          class="figure-part"
+          id="arm-1"
+        />
+        <line
+          x1="140"
+          y1="120"
+          x2="160"
+          y2="100"
+          class="figure-part"
+          id="arm-2"
+        />
+        <!-- legs -->
+        <line
+          x1="140"
+          y1="150"
+          x2="120"
+          y2="180"
+          class="figure-part"
+          id="leg-1"
+        />
+        <line
+          x1="140"
+          y1="150"
+          x2="160"
+          y2="180"
+          class="figure-part"
+          id="leg-2"
+        />
+      </svg>
+    </div>
+    <div class="random-word"></div>
+
+    <div class="parent-btn">
+      <button id="hint-btn" class="btn">Hint</button>
+      <button id="play-again-btn" class="btn">Play Again</button>
+    </div>
+    <!-- Hint / Play again btns-->
+    <div class="btns-container"></div>
+
+    <script src="./scripts/script.js"></script>
+  </body>
 </html>
